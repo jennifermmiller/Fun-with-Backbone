@@ -36,7 +36,11 @@
                     <input type="text" class="item-input js-item-input" placeholder="I need to...">
                     <button type="submit" class="js-add-btn">Todo it!</button>
                 </div>
-                <div class="js-list-stream"><!-- Insert todo items --></div>
+                <div class="js-list-stream">
+                    <ul class="list-items row">
+                        <!-- Insert todo items -->
+                    </ul>
+                </div>
             
                 <div class="completed-list">
                     <!-- List of completed items? -->
@@ -48,18 +52,14 @@
 
         </div>
 
-        <script type="text/template" id="list-template">
-            <ul class="list-items row">
-                <li>
-                    <div class="complete-item col-md-1">
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </div>
-                    <div class="item-description col-md-10"><%=itemDescription%></div>
-                    <div class="delete-item">
-                        <span class="glyphicon glyphicon-trash col-md-1"></span>
-                    </div>
-                </li>
-            </ul>
+        <script type="text/template" id="list-template">            
+            <div class="complete-item col-md-1">
+                <span class="glyphicon glyphicon-ok"></span>
+            </div>
+            <div class="item-description col-md-10"><%=itemDescription%></div>
+            <div class="delete-item">
+                <span class="glyphicon glyphicon-trash col-md-1"></span>
+            </div>
         </script>
 
         <script type="text/template" id="edit-template">

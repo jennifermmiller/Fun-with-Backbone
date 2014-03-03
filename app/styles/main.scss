@@ -57,20 +57,28 @@ body {
         list-style: none;
         padding: 0;
 
-        .complete-item,
-        .item-description,
-        .delete-item{
-            display: inline-block;
-        }
+        li{
+            .complete-item,
+            .item-description,
+            .delete-item{
+                display: inline-block;
+            }
 
-        .item-description{
-            text-align: left;
-        }
+            .item-description{
+                text-align: left;
+            }
 
-        // .delete-item{
-        //     display: none;
+            &.completed{
+                .complete-item{
+                    color: green;
+                }
 
-        // }
+                .item-description{
+                    text-decoration: line-through;
+                    font-weight: 100;
+                }
+            }
+        }   
     }
 }
 

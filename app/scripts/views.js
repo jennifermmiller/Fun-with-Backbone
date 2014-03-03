@@ -1,19 +1,25 @@
+//Way to only show delte btn on hover?
+//Needs to be styled
+//Add lists on bottom
+
 var ListView = Backbone.View.extend({
+	tagName: 'li',
 
 	createTemplate: _.template($('#list-template').text()),
 
 	events: {
-		'click .complete-item' : 'done', 
+		'click .complete-item' : 'done',
 		'dblclick .item-description' : 'edit',
 		'keypress .edit-item' : 'saveEdit',
 		'click .delete-item': 'destroy'
 	},
 
 	initialize: function(){
-		$('.js-list-stream').append(this.el);
+		$('.list-items').append(this.el);
 		this.render();
 		
 		this.listenTo(this.model, 'add', this.render);
+		this.listenTo(this.model, 'change', this.render);
 		this.listenTo(this.model, 'destroy', this.remove);
 	},
 
@@ -22,40 +28,24 @@ var ListView = Backbone.View.extend({
 	},
 
 	done: function(){
-
+		this.model.set('complete', !this.model.get('complete'));
+		this.$el.toggleClass('completed');
 	},
 
 	edit: function(){
-		var editTemplate = _.template($('#edit-item-template').text());
+		var editTemplate = _.template($('#edit-template').text());
 		this.$el.html(editTemplate(this.model.attributes));
+		this.$el.find('.edit-item').focus();
 	},
 
 	saveEdit: function(enter){
-		if(enter.keyCode === 13) {
-			var editDescription = this.input.val();
-			this.model.save({itemDescripton: editDescription});
-			
+		if(enter.which === 13) {
+			var editDescription = this.$el.find('.edit-item').val();
+			this.model.save({itemDescription: editDescription});
 		}
-
 	},
 
 	destroy: function(){
 		this.model.destroy();
 	}
 });
-
-
-// var EditView = Backbone.View.extend({
-// 	className: 'edit-item',
-
-// 	createTemplate: _.template($('#edit-template').text()),
-
-// 	initialize: function(){
-// 		$('.item-description').html(this.el);
-// 		this.render();
-// 	},
-
-// 	render: function(){
-// 		this.$el.html(this.createTemplate(this.model.attributes));
-// 	}
-// });

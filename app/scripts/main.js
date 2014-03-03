@@ -9,8 +9,12 @@ $(document).ready(function(){
 		addTodoItem();
 	});
 
+	$('.js-item-input').on('keypress', function(enter){
+		if(($('.js-item-input').val() !== '') && (enter.which === 13)){
+			addTodoItem();
+		}
+	});
 });
-
 
 
 function fetchListItems(){
@@ -18,14 +22,14 @@ function fetchListItems(){
 		success: function(){
 			items.each(function(item){
 				new ListView({model: item});
-				console.log("An item has been added.")
-			})
+				console.log('An item has been added.');
+			});
 		},
 		error: function(){
-			console.log('Error! Cannot load item.')
+			console.log('Error! Cannot load item.');
 		}
 	});
-} 
+}
 
 function addTodoItem(){
 	if($('.js-item-input').val() !== '') {
@@ -38,7 +42,7 @@ function addTodoItem(){
 		new ListView({model: newTodo});
 
 		newTodo.save();
-	}	
+	}
 
 	$('.js-item-input').val('');
 }
