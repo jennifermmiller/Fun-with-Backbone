@@ -1,7 +1,4 @@
-//Way to only show delte btn on hover?
-//Needs to be styled
-//Add lists on bottom
-
+//View og indiviual list items
 var ListView = Backbone.View.extend({
 	tagName: 'li',
 
@@ -16,19 +13,21 @@ var ListView = Backbone.View.extend({
 
 	initialize: function(){
 		$('.list-items').append(this.el);
+		
 		this.render();
 		
-		this.listenTo(this.model, 'add', this.render);
+		this.listenTo(this.model, 'add', this.render); 
 		this.listenTo(this.model, 'change', this.render);
 		this.listenTo(this.model, 'destroy', this.remove);
 	},
 
 	render: function(){
 		this.$el.html(this.createTemplate(this.model.attributes));
+		this.$el.toggleClass('complete', this.model.get('complete'));
 	},
 
 	done: function(){
-		this.model.set('complete', !this.model.get('complete'));
+		this.model.toggleComplete();
 		this.$el.toggleClass('completed');
 	},
 
@@ -39,7 +38,7 @@ var ListView = Backbone.View.extend({
 	},
 
 	saveEdit: function(enter){
-		if(enter.which === 13) {
+		if(enter.which === 13 && $('.edit-item') !== '') {
 			var editDescription = this.$el.find('.edit-item').val();
 			this.model.save({itemDescription: editDescription});
 		}
