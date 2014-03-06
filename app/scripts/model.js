@@ -5,9 +5,9 @@
 var Item = Backbone.Model.extend({
 	idAttribute: '_id',
 
-	defaults: {
+	defaults:{
 		itemDescription: 'Why have a todo item with nothing on it? You sill goose!',
-		complete: false		
+		complete: false,	
 	},
 
 	toggleComplete: function(){

@@ -32,10 +32,7 @@
                 <h3 class="text-muted">Just TODO it!</h3>
             </div>
             <div class="jumbotron">
-                <div class="add-item">
-                    <input type="text" class="item-input js-item-input" placeholder="I need to...">
-                    <button type="submit" class="js-add-btn">Todo it!</button>
-                </div>
+                <!-- Inject add-item here -->
                 <div class="js-list-stream">
                     <ul class="list-items row">
                         <!-- Insert todo items -->
@@ -47,7 +44,13 @@
             </div>
         </div>
 
+        <!-- Add item here: -->
+        <script type="text/template" id="start-list-template">
+            <input type="text" class="item-input js-item-input" placeholder="I need to...">
+            <button type="submit" class="js-add-btn">Todo it!</button>
+        </script>
 
+        <!-- List items here -->
         <script type="text/template" id="list-template">            
             <div class="complete-item col-md-1">
                 <span class="glyphicon glyphicon-ok"></span>
@@ -57,14 +60,19 @@
                 <span class="glyphicon glyphicon-trash col-md-1"></span>
             </div>
             <div class="focus-item">
-                <a href="/todo"><span class="js-focus glyphicon glyphicon-hand-right col-md-1"></span></a>
+                <a href="<%=this.model.get('id')%>" class="js-focus"><span class="glyphicon glyphicon-hand-right col-md-1"></span></a>
             </div>
         </script>
 
-
+        <!-- Edit list items -->
         <script type="text/template" id="edit-template">
             <input type="text" class="edit-item" value="<%=itemDescription%>">
         </script>
+
+        <script type="text/template" id="#focus-view-template">
+            <%=itemDescription%>
+        </script>
+
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
@@ -102,8 +110,9 @@
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/model.js"></script>
         <script src="scripts/router.js"></script>
-        <script src="scripts/main-view.js"></script>
-        <script src="scripts/list-view.js"></script>
+        <script src="scripts/views/main-view.js"></script>
+        <script src="scripts/views/list-view.js"></script>
+        <script src="scripts/views/focus-view.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>

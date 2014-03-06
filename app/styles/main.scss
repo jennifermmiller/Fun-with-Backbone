@@ -13,6 +13,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background: rgb(111, 27, 73);
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -25,14 +26,12 @@ body {
 
 /* Custom page header */
 .header {
-    border-bottom: 1px solid #e5e5e5;
 
     /* Make the masthead heading the same height as the navigation */
     h3 {
-        margin-top: 0;
         margin-bottom: 0;
         line-height: 40px;
-        padding-bottom: 19px;
+        text-align: center;
     }
 }
 
@@ -40,7 +39,7 @@ body {
 .footer {
     padding-top: 19px;
     color: #777;
-    border-top: 1px solid #e5e5e5;
+    float: right;
 }
 
 .container-narrow > hr {
@@ -52,12 +51,33 @@ body {
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
 
+    .add-item{
+        margin-bottom: 20px;
+
+        .item-input{
+            width: 82%;
+            margin-right: -7px;
+            padding-left: 10px;
+        }
+
+        .add-btn{
+            height: 51px;
+            padding: 0;
+            width: 100px;
+            background: rgb(169, 128, 162);
+
+        }
+    }
+
     .list-items{
 
         list-style: none;
         padding: 0;
 
         li{
+            border-bottom: 1px solid;
+            margin-top: 5px;
+
             .complete-item,
             .item-description,
             .delete-item,
@@ -67,6 +87,15 @@ body {
 
             .item-description{
                 text-align: left;
+            }
+
+            .delete-item,
+            .focus-item{
+                visibility: hidden;
+
+                &:hover{
+                    visibility: visible;
+                }
             }
 
             &.completed{

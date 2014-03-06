@@ -1,47 +1,51 @@
 var MainView = Backbone.View.extend({
+	className: 'add-item',
+
+	template: _.template($('#start-list-template').text()),
 
 	events:{
 		'click .js-add-btn': 'addTodoItem',
-		//'keypress .js-item-input': 'addTodoItem' ...how to add this into same???
+		//'hover': 'showMoreOptns'
 	},
 
 	initialize: function(){
-		window.items = new ItemsCollection();
+		$('.jubotron').html(this.el);
+		this.$el.html(this.template());
+
+		this.items = new ItemsCollection();
 	
 		this.fetchListItems();
 
 		$('.js-add-btn').click(function(){
-			addTodoItem();
+			this.addTodoItem();
 		});
 
 		$('.js-item-input').on('keypress', function(enter){
 			if(($('.js-item-input').val() !== '') && (enter.which === 13)){
-				addTodoItem();
+				this.addTodoItem();
 			}
 		});
 	},
 
 	fetchListItems: function(){
-		items.fetch({
+		this.items.fetch({
 			success: function(){
-				items.each(function(item){
-					new ListView({model: item});
-					console.log('An item has been added.');
-				});
+				console.log('Hurray! Items fetched!');
 			},
 			error: function(){
 				console.log('Error! Cannot load item.');
 			}
 		});
 	},
-
-	addTodoItem: function(e){
+	
+	addTodoItem: function(){
 		if($('.js-item-input').val() !== '')  {
 			var newItem  = {
 				itemDescription: $('.js-item-input').val(),
+				id: _.uniqueId('todo')
 			};
 
-			var newTodo = items.add(newItem);
+			this.items.add(newItem);
 
 			new ListView({model: newTodo});
 
@@ -49,9 +53,11 @@ var MainView = Backbone.View.extend({
 		}
 
 		$('.js-item-input').val('');
-	}
+	},
+
+	// showMoreOptns: function(){
+	// 	$('.delete-item').show();
+
+	// }
 });
-
-
-
 
