@@ -1,19 +1,19 @@
 var MainView = Backbone.View.extend({
 	className: 'add-item',
 
-	template: _.template($('#start-list-template').text()),
+	//template: _.template($('#start-list-template').text()),
 
 	events:{
 		'click .js-add-btn': 'addTodoItem',
-		//'hover': 'showMoreOptns'
+		
 	},
 
 	initialize: function(){
-		$('.jubotron').html(this.el);
-		this.$el.html(this.template());
+		//$('.jubotron').html(this.el);
+		//this.$el.html(this.template());
 
 		this.items = new ItemsCollection();
-	
+
 		this.fetchListItems();
 
 		$('.js-add-btn').click(function(){
@@ -37,7 +37,7 @@ var MainView = Backbone.View.extend({
 			}
 		});
 	},
-	
+
 	addTodoItem: function(){
 		if($('.js-item-input').val() !== '')  {
 			var newItem  = {
@@ -54,10 +54,4 @@ var MainView = Backbone.View.extend({
 
 		$('.js-item-input').val('');
 	},
-
-	// showMoreOptns: function(){
-	// 	$('.delete-item').show();
-
-	// }
 });
-

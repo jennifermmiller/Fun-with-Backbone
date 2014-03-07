@@ -1,8 +1,7 @@
 var Router =  Backbone.Router.extend({
 
 	routes:{
-		'': 'index',
-		'/:id': 'focus'
+		'': 'index'
 	},
 
 	start: function(){
@@ -17,19 +16,11 @@ var Router =  Backbone.Router.extend({
 		});
 
 		new MainView();
+		
 	},
 
 	index: function(){
 		this.items.fetch();
-	},
-
-	//broken:(
-	focus: function(){
-		// var focusItem = items.find(function(item){
-		// 	return item.get('id') == id;
-		// });
-
-		new FocusView({model: this.model});
 	}
 	
 });

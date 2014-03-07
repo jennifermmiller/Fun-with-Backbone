@@ -1,6 +1,8 @@
 console.log('Wazzzzzupppp man?!');
 
 $(document).ready(function(){
+	
+
 	var router = new Router();
 	router.start();
 });

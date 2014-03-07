@@ -14,9 +14,9 @@ var ListView = Backbone.View.extend({
 
 	initialize: function(){
 		$('.list-items').append(this.el);
-		
+
 		this.render();
-		
+
 		this.listenTo(this.model, 'change', this.render);
 		this.listenTo(this.model, 'destroy', this.remove);
 	},

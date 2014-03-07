@@ -89,14 +89,14 @@ body {
                 text-align: left;
             }
 
-            .delete-item,
-            .focus-item{
-                visibility: hidden;
+            // .delete-item,
+            // .focus-item{
+            //     visibility: hidden;
 
-                &:hover{
-                    visibility: visible;
-                }
-            }
+            //     &:hover{
+            //         visibility: visible;
+            //     }
+            // }
 
             &.completed{
                 .complete-item{
