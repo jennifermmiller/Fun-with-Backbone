@@ -1,26 +1,19 @@
 console.log('Wazzzzzupppp man?!');
 
-var items = new ItemsCollection();
-
 $(document).ready(function(){
-	Parse.initialize("ASBuupS1Tq2QUgghffz1iI0nUhqtJuF11RccdEYk", "zPckGqzTdAXdIoZASCTSnytULuLYIUjkKOtOsOp1");
+	Parse.initialize("Q2dpmPjadkOev3PbLmYPU9HnH0poaMBP2lY2DwNj", "oS1PQTCi1wT19J6hMYv0OtkK5m1vxjpYPzYouJ1Z");
+	
+	window.router = new Router();
 
-	// items.fetch({
-	// 	success: function(collection){
-	// 		collection.each(function(item){
-	// 			new ListView({model: item})
-	// 		});
-
-	// 	}
-	// })
-
-	router = new Router();
-	router.start();
-
-
+	Backbone.history.start();
 });
 
 
-//Way to only show delte btn on hover?
-//Needs to be styled
-//Add lists on bottom
+
+//A lengthy list of things to fix:
+	//Get router working, so user can use it to only see one item...maybe at this point it als displays details or an img....or probably not
+	//Add lists on bottom (done,active,remaining,etc)
+	//Fix edit fn so that can escape without modifiying entry
+		//Also, shoulf this be under the model???
+	//Needs to be styled
+		//only show delte/focus btns on hover

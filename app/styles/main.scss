@@ -1,6 +1,7 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
+@import 'compass/css3';
 
 .browsehappy {
     margin: 0.2em 0;
@@ -13,6 +14,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background: rgb(111, 27, 73);
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -25,14 +27,12 @@ body {
 
 /* Custom page header */
 .header {
-    border-bottom: 1px solid #e5e5e5;
 
     /* Make the masthead heading the same height as the navigation */
     h3 {
-        margin-top: 0;
         margin-bottom: 0;
         line-height: 40px;
-        padding-bottom: 19px;
+        text-align: center;
     }
 }
 
@@ -40,7 +40,7 @@ body {
 .footer {
     padding-top: 19px;
     color: #777;
-    border-top: 1px solid #e5e5e5;
+    float: right;
 }
 
 .container-narrow > hr {
@@ -48,38 +48,82 @@ body {
 }
 
 /* Main marketing message and sign up button */
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
-
-    .list-items{
-
-        list-style: none;
+.container{
+    .jumbotron {
+        text-align: center;
+        border-bottom: 1px solid #e5e5e5;
         padding: 0;
 
-        li{
-            .complete-item,
-            .item-description,
-            .delete-item,
-            .focus-item{
-                display: inline-block;
+        .add-item{
+            margin-bottom: 20px;
+            background: lavender;
+            padding: 20px;
+            border: 1px solid lightblue;
+            @include border-radius(6px 6px 0 0);
+
+            .item-input{
+                width: 82%;
+                margin-right: -7px;
+                padding-left: 10px;
             }
 
-            .item-description{
-                text-align: left;
-            }
+            .add-btn{
+                height: 51px;
+                padding: 0;
+                width: 100px;
+                background: rgb(169, 128, 162);
 
-            &.completed{
-                .complete-item{
-                    color: green;
+            }
+        }
+
+        .list-items{
+
+            list-style: none;
+            padding: 0;
+
+            li{
+                border-bottom: 1px solid;
+                margin-top: 5px;
+
+                .complete-item,
+                .item-description,
+                .delete-item,
+                .focus-item{
+                    display: inline-block;
                 }
 
                 .item-description{
-                    text-decoration: line-through;
-                    font-weight: 100;
+                    text-align: left;
                 }
-            }
-        }   
+
+                // .delete-item,
+                // .focus-item{
+                //     visibility: hidden;
+
+                //     &:hover{
+                //         visibility: visible;
+                //     }
+                // }
+
+                .edit-item{
+                    margin-left: -35px;
+                    width: 75%;
+                    padding: 0 5px;
+                }
+
+                &.completed{
+                    .complete-item{
+                        color: green;
+                    }
+
+                    .item-description{
+                        text-decoration: line-through;
+                        font-weight: 100;
+                    }
+                }
+            }   
+        }
+
     }
 }
 

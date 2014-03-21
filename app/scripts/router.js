@@ -1,38 +1,27 @@
-var Router =  Parse.Router.extend({
+var Router = Backbone.Router.extend({
 
-	routes:{
-		'': 'index',
-		'todo/:id': 'focus'
+	routes: {
+		'': 'index'
 	},
 
-	start: function(){
-		Backbone.history.start({pushState: true})
-	},
-
-	initialize: function(){
+	initialize: function() {
 		this.items = new ItemsCollection();
 
-		new MainView();
+		this.items.on('add', function(item){
+			new ListView({model: item});
+		});		
 	},
 
 	index: function(){
-		
-	},
-	
+		new MainView();
+
+		this.items.fetch({
+			success: function(items){
+				items.each(function(item){
+					console.log('fetching?')
+					new ListView({model: item})
+				});
+			}
+		});
+	}	
 });
-
-
-
-// function fetchListItems(){
-// 		items.fetch({
-// 			success: function(){
-// 				items.each(function(item){
-// 					new ListView({model: item});
-// 					console.log('An item has been added.');
-// 				});
-// 			},
-// 			error: function(){
-// 				console.log('Error! Cannot load item.');
-// 			}
-// 		});
-// 	}

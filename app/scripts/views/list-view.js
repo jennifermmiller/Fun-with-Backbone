@@ -1,5 +1,5 @@
 //View og indiviual list items
-var ListView = Parse.View.extend({
+var ListView = Backbone.View.extend({
 	tagName: 'li',
 
 	createTemplate: _.template($('#list-template').text()),
@@ -8,15 +8,15 @@ var ListView = Parse.View.extend({
 		'click .complete-item' : 'done',
 		'dblclick .item-description' : 'edit',
 		'keypress .edit-item' : 'saveEdit',
-		'click .delete-item': 'destroy'
+		'click .delete-item': 'destroy',
+		'click .js-focus': 'getFocus'
 	},
 
 	initialize: function(){
 		$('.list-items').append(this.el);
-		
+
 		this.render();
-		
-		this.listenTo(this.model, 'add', this.render); 
+
 		this.listenTo(this.model, 'change', this.render);
 		this.listenTo(this.model, 'destroy', this.remove);
 	},
@@ -37,8 +37,9 @@ var ListView = Parse.View.extend({
 		this.$el.find('.edit-item').focus();
 	},
 
+	//fix this...clear edit field w/o having to change anything?
 	saveEdit: function(enter){
-		if(enter.which === 13 && $('.edit-item') !== '') {
+		if(enter.which === 13) {
 			var editDescription = this.$el.find('.edit-item').val();
 			this.model.save({itemDescription: editDescription});
 		}
@@ -46,5 +47,11 @@ var ListView = Parse.View.extend({
 
 	destroy: function(){
 		this.model.destroy();
-	}
+	},
+
+	//fix this too!
+	// getFocus: function(){
+	// 	var id = this.model.get('id');
+	// 	this.$el.find('.js-focus').attr('href', '/todo/'+id});	
+	// }
 });
