@@ -57,6 +57,8 @@ function addTodoItem (){
 				console.log("Too bad! Looks like: " + error);
 			}
 		});
+
+		$('.item-input').val('');
 	}
 
 }

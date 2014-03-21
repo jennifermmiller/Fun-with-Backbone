@@ -9,7 +9,8 @@ var ListView = Backbone.View.extend({
 		'dblclick .item-description' : 'edit',
 		'keypress .edit-item' : 'saveEdit',
 		'click .delete-item': 'destroy',
-		'click .js-focus': 'getFocus'
+		'click .js-focus': 'getFocus',
+		'hover': 'showDelete'
 	},
 
 	initialize: function(){
@@ -37,7 +38,6 @@ var ListView = Backbone.View.extend({
 		this.$el.find('.edit-item').focus();
 	},
 
-	//fix this...clear edit field w/o having to change anything?
 	saveEdit: function(enter){
 		if(enter.which === 13) {
 			var editDescription = this.$el.find('.edit-item').val();
@@ -49,9 +49,7 @@ var ListView = Backbone.View.extend({
 		this.model.destroy();
 	},
 
-	//fix this too!
-	// getFocus: function(){
-	// 	var id = this.model.get('id');
-	// 	this.$el.find('.js-focus').attr('href', '/todo/'+id});	
-	// }
+	showDelete: function(){
+		$('.delete-item'). show();
+	}
 });

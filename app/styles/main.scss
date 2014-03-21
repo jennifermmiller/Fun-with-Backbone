@@ -2,6 +2,15 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 @import 'compass/css3';
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+//Jen's colors:
+$off-white: #FCFAD0;
+$lt-gray: #A1A194;
+$md-gray: #5B605F;
+$dk-gray: #464646;
+$pink: #A90641;
+
 
 .browsehappy {
     margin: 0.2em 0;
@@ -14,7 +23,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 body {
     padding-top: 20px;
     padding-bottom: 20px;
-    background: rgb(111, 27, 73);
+    font-family: Oswald;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -29,7 +38,7 @@ body {
 .header {
 
     /* Make the masthead heading the same height as the navigation */
-    h3 {
+    h2 {
         margin-bottom: 0;
         line-height: 40px;
         text-align: center;
@@ -53,77 +62,91 @@ body {
         text-align: center;
         border-bottom: 1px solid #e5e5e5;
         padding: 0;
+        background: $dk-gray;
+        color: $lt-gray;
+        box-shadow: 1px 1px 3px $pink;
 
         .add-item{
             margin-bottom: 20px;
-            background: lavender;
+            background: $md-gray;
             padding: 20px;
-            border: 1px solid lightblue;
+            border-bottom: 1px solid $pink;
             @include border-radius(6px 6px 0 0);
 
             .item-input{
-                width: 82%;
-                margin-right: -7px;
+                width: 80%;
+                margin-right: 20px;
                 padding-left: 10px;
+                background: $dk-gray;
+                color: $off-white;
+                @include border-radius(6px);
             }
 
             .add-btn{
                 height: 51px;
                 padding: 0;
                 width: 100px;
-                background: rgb(169, 128, 162);
+                background: $pink;
+                color: $off-white;
+                @include border-radius(6px);
 
             }
         }
 
-        .list-items{
+        .list-stream{
+            padding: 0 20px;
 
-            list-style: none;
-            padding: 0;
+            .list-items {
 
-            li{
-                border-bottom: 1px solid;
-                margin-top: 5px;
+                list-style: none;
+                padding: 0;
+                
+                margin: 0;
 
-                .complete-item,
-                .item-description,
-                .delete-item,
-                .focus-item{
-                    display: inline-block;
-                }
+                li{
+                    border-bottom: 1px solid;
+                    //margin-top: 5px;
+                    overflow: hidden;
 
-                .item-description{
-                    text-align: left;
-                }
-
-                // .delete-item,
-                // .focus-item{
-                //     visibility: hidden;
-
-                //     &:hover{
-                //         visibility: visible;
-                //     }
-                // }
-
-                .edit-item{
-                    margin-left: -35px;
-                    width: 75%;
-                    padding: 0 5px;
-                }
-
-                &.completed{
-                    .complete-item{
-                        color: green;
+                    .complete-item,
+                    .item-description,
+                    .delete-item,
+                    .focus-item{
+                        display: inline-block;
                     }
 
                     .item-description{
-                        text-decoration: line-through;
-                        font-weight: 100;
+                        text-align: left;
+                    
                     }
-                }
-            }   
-        }
 
+                    .edit-item{
+                        margin: 0 0 7px -35px;
+                        width: 75%;
+                        padding: 0 5px;
+                        background: $md-gray;
+                        color: $lt-gray;
+                    }
+
+                    &:last-child{
+                        border-bottom: none;
+                    }
+
+                    &.completed{
+                        background: $md-gray;
+
+                        .complete-item{
+                            color: green;
+                        }
+
+                        .item-description{
+                            text-decoration: line-through;
+                            font-weight: 100;
+                        }
+                    }
+                }   
+            }
+        }
     }
 }
 
@@ -145,7 +168,7 @@ body {
 
     /* Space out the masthead */
     .header {
-        margin-bottom: 30px;
+        margin-bottom: 15px;
     }
     
     /* Remove the bottom border on the jumbotron for visual effect */
