@@ -1,5 +1,5 @@
 //View og indiviual list items
-var ListView = Backbone.View.extend({
+var ListView = Parse.View.extend({
 	tagName: 'li',
 
 	createTemplate: _.template($('#list-template').text()),

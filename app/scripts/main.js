@@ -1,7 +1,20 @@
 console.log('Wazzzzzupppp man?!');
 
+var items = new ItemsCollection();
+
 $(document).ready(function(){
-	var router = new Router();
+	Parse.initialize("ASBuupS1Tq2QUgghffz1iI0nUhqtJuF11RccdEYk", "zPckGqzTdAXdIoZASCTSnytULuLYIUjkKOtOsOp1");
+
+	// items.fetch({
+	// 	success: function(collection){
+	// 		collection.each(function(item){
+	// 			new ListView({model: item})
+	// 		});
+
+	// 	}
+	// })
+
+	router = new Router();
 	router.start();
 
 

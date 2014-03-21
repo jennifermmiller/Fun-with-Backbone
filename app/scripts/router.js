@@ -1,4 +1,4 @@
-var Router =  Backbone.Router.extend({
+var Router =  Parse.Router.extend({
 
 	routes:{
 		'': 'index',
@@ -23,16 +23,16 @@ var Router =  Backbone.Router.extend({
 
 
 
-function fetchListItems(){
-		items.fetch({
-			success: function(){
-				items.each(function(item){
-					new ListView({model: item});
-					console.log('An item has been added.');
-				});
-			},
-			error: function(){
-				console.log('Error! Cannot load item.');
-			}
-		});
-	}
+// function fetchListItems(){
+// 		items.fetch({
+// 			success: function(){
+// 				items.each(function(item){
+// 					new ListView({model: item});
+// 					console.log('An item has been added.');
+// 				});
+// 			},
+// 			error: function(){
+// 				console.log('Error! Cannot load item.');
+// 			}
+// 		});
+// 	}

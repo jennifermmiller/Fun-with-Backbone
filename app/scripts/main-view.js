@@ -1,4 +1,7 @@
-var MainView = Backbone.View.extend({
+//add model instance to page and to collection 
+//fetch collection
+
+var MainView = Parse.View.extend({
 
 	events:{
 		'click .js-add-btn': 'addTodoItem',
@@ -34,23 +37,23 @@ var MainView = Backbone.View.extend({
 			}
 		});
 	},
-
-	addTodoItem: function(e){
-		if($('.js-item-input').val() !== '')  {
-			var newItem  = {
-				itemDescription: $('.js-item-input').val(),
-			};
-
-			var newTodo = items.add(newItem);
-
-			new ListView({model: newTodo});
-
-			newTodo.save();
-		}
-
-		$('.js-item-input').val('');
-	}
 });
+
+function addTodoItem (e){
+	if($('.js-item-input').val() !== '')  {
+		var newItem  = {
+			itemDescription: $('.js-item-input').val(),
+		};
+
+		var newTodo = items.add(newItem);
+
+		new ListView({model: newTodo});
+
+		newTodo.save();
+	}
+
+	$('.js-item-input').val('');
+}
 
 
 
