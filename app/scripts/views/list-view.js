@@ -24,12 +24,17 @@ var ListView = Backbone.View.extend({
 
 	render: function(){
 		this.$el.html(this.createTemplate(this.model.attributes));
-		this.$el.toggleClass('complete', this.model.get('complete'));
+		
+		//Need to test this once we get inernet
+		if(this.model.get('complete') === true) {
+			this.$el.addClass('completed');
+		} else {
+			this.$el.removeClass('completed');
+		}
 	},
 
 	done: function(){
 		this.model.toggleComplete();
-		this.$el.toggleClass('completed');
 	},
 
 	edit: function(){

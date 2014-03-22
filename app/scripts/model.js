@@ -10,6 +10,11 @@ var ItemClass = Parse.Object.extend('ItemClass',{
 
 	toggleComplete: function(){
 		this.set('complete', !this.get('complete'));
+		this.save(null, {
+			success: function(item){
+				console.log('Complete status has been updated!');
+			}
+		});
 	}
 });
 
