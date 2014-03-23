@@ -2,10 +2,10 @@
 //Toggle is in here b/c it's changing an attribute of a model
 //Should edit be plaved in here somehow? Technically also changing the model
 
-var ItemClass = Parse.Object.extend('ItemClass',{ 
+var ItemClass = Parse.Object.extend('ItemClass',{
 	defaults:{
 		itemDescription: 'Why have a todo item with nothing on it? You sill goose!',
-		complete: false,	
+		complete: false
 	},
 
 	toggleComplete: function(){
@@ -20,5 +20,5 @@ var ItemClass = Parse.Object.extend('ItemClass',{
 
 
 var ItemsCollection = Parse.Collection.extend({
-  model: ItemClass
+	model: ItemClass
 });

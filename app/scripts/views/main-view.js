@@ -3,7 +3,7 @@ var MainView = Backbone.View.extend({
 
 	template: _.template($('#start-list-template').text()),
 
-	//This doesnt really belong here...
+	//This doesnt really belong here...should be fixed at some point
 	events:{
 		'click .js-add-btn': 'addTodoItem',
 
@@ -24,24 +24,11 @@ var MainView = Backbone.View.extend({
 				$('js-item-input').val('');
 			}
 		});
-	},
-
-	clearComplete: function(){
-		console.log('what');
 	}
-
-	// clearComplete: function(){
-	// 	console.log('here?');
-	// 	// var destroyArray = _.where(router.items, {complete: true});
-	// 	// console.log(destroyArray);
-	// 	// _.each(destroyArray, function(item){
-	// 	// 	item.destroy();
-	// 	// }); 
-	// }
 });
 
 
-//Helper function:
+//Need to integrate this
 function addTodoItem (){
 	var item = new ItemClass();
 
@@ -55,18 +42,10 @@ function addTodoItem (){
 				console.log('Sweet, Sweet success!');
 			},
 			error: function(result, error){
-				console.log("Too bad! Looks like: " + error);
+				console.log('Too bad! Looks like: ' + error);
 			}
 		});
 
 		$('.item-input').val('');
 	}
 }
-
-$('.clear-complete-items').click(function(){
-	var destroyArray = _.where(router.items.model, {complete: true});
-			console.log(destroyArray);
-			_.each(destroyArray, function(item){
-				item.destroy();
-			 });
-})

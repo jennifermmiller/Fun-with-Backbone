@@ -11,7 +11,7 @@ var Router = Backbone.Router.extend({
 
 		this.items.on('add', function(item){
 			new ListView({model: item});
-		});		
+		});
 	},
 
 	index: function(){
@@ -21,7 +21,7 @@ var Router = Backbone.Router.extend({
 		this.items.fetch({
 			success: function(items){
 				items.each(function(item){
-					new ListView({model: item})
+					new ListView({model: item});
 				});
 			}
 		});
@@ -52,5 +52,4 @@ var Router = Backbone.Router.extend({
 			}
 		});
 	}
-
 });
