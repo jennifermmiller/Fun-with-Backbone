@@ -25,7 +25,6 @@ var ListView = Backbone.View.extend({
 	render: function(){
 		this.$el.html(this.createTemplate(this.model.attributes));
 		
-		//Need to test this once we get inernet
 		if(this.model.get('complete') === true) {
 			this.$el.addClass('completed');
 		} else {

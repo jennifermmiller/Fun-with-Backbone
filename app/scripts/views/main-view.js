@@ -3,16 +3,15 @@ var MainView = Backbone.View.extend({
 
 	template: _.template($('#start-list-template').text()),
 
+	//This doesnt really belong here...
 	events:{
 		'click .js-add-btn': 'addTodoItem',
-		
+
 	},
 
 	initialize: function(){
 		$('.jubotron').html(this.el);
 		this.$el.html(this.template());
-
-		this.fetchListItems();
 
 		$('.js-add-btn').click(function(){
 			addTodoItem();
@@ -27,20 +26,22 @@ var MainView = Backbone.View.extend({
 		});
 	},
 
-	fetchListItems: function(){
-		router.items.fetch({
-			success: function(){
-				console.log('Hurray! Items fetched!');
-			},
-			error: function(){
-				console.log('Error! Cannot load item.');
-			}
-		});
+	clearComplete: function(){
+		console.log('what');
 	}
+
+	// clearComplete: function(){
+	// 	console.log('here?');
+	// 	// var destroyArray = _.where(router.items, {complete: true});
+	// 	// console.log(destroyArray);
+	// 	// _.each(destroyArray, function(item){
+	// 	// 	item.destroy();
+	// 	// }); 
+	// }
 });
 
 
-//Helper functions:
+//Helper function:
 function addTodoItem (){
 	var item = new ItemClass();
 
@@ -60,5 +61,12 @@ function addTodoItem (){
 
 		$('.item-input').val('');
 	}
-
 }
+
+$('.clear-complete-items').click(function(){
+	var destroyArray = _.where(router.items.model, {complete: true});
+			console.log(destroyArray);
+			_.each(destroyArray, function(item){
+				item.destroy();
+			 });
+})

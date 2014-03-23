@@ -29,20 +29,26 @@
 
 
         <div class="container">
-            <div class="header">
-                <h2 class="text-muted">Just TODO it!</h2>
-            </div>
+            
 
             <div class="jumbotron">
+                <div class="header">
+                    <h2 class="text-muted">Just TODO it!</h2>
+                </div>
                 <div class="add-item">
                     <input type="text" class="item-input js-item-input" placeholder="I need to...">
-                    <button type="submit" class="add-btn js-add-btn">Todo it!</button>
+                    <button type="submit" class="add-btn js-add-btn">Add</button>
                 </div>
                 <!-- Inject add-item here -->
                 <div class="js-list-stream list-stream">
                     <ul class="list-items row">
                         <!-- Insert todo items -->
                     </ul>
+                </div>
+                <div class="additional">
+                    <a href=""><button class="all">All</button></a>
+                    <a href="#active-items"><button class="active">Active</button></a>
+                    <a href="#complete-items"><button class="complete">Complete</button></a>
                 </div>
             </div>
             <div class="footer">
