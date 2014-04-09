@@ -5,12 +5,19 @@ $icon-font-path: "../bower_components/sass-bootstrap/fonts/";
 //@import url(http://fonts.googleapis.com/css?family=Oswald);
 
 //Jen's colors:
-$off-white: #FCFAD0;
-$lt-gray: #A1A194;
-$md-gray: #5B605F;
-$dk-gray: #464646;
-$pink: #A90641;
+$lt-blue: #f5f5f5;
+$md-blue: #c7d0d5; //lt-blue
+$dk-blue: #93b1c6; //dk
+$red-orange: #ec583a; //orange
+$orange: #ff7148; //bright
 
+//Take11:
+$white: #cdcab9;
+$md-white: #d6d3c4;
+$dk-white: #dfded4;
+$brown: #3C4659; //actually blue-gray
+$red: #BF181B;
+$blue:#434D8D;
 
 .browsehappy {
     margin: 0.2em 0;
@@ -23,6 +30,7 @@ $pink: #A90641;
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    //background: $white;
     //font-family: Oswald;  ...not sure I like this font
 }
 
@@ -36,15 +44,15 @@ body {
 
 /* Custom page header */
 .header {
-
     /* Make the masthead heading the same height as the navigation */
     h2 {
+        @include border-radius(6px 6px 0 0);
         margin-bottom: 0;
         padding-top: 20px;
         line-height: 40px;
         text-align: center;
-        background: $md-gray;
-        color: $off-white;
+        background: $white;
+        color: $brown;
     }
 }
 
@@ -65,36 +73,41 @@ body {
         text-align: center;
         border-bottom: 1px solid #e5e5e5;
         padding: 0;
-        background: $dk-gray;
-        color: $off-white;
-        box-shadow: 1px 1px 3px $pink;
+        background: $white;
+        color: $brown;
+        box-shadow: 1px 1px 3px $red;
+        @include border-radius(6px);
 
         .add-item{
             margin-bottom: 20px;
-            background: $md-gray;
+            background: $white;
             padding: 20px;
-            border-bottom: 1px solid $pink;
+            border-bottom: 1px solid $red;
             @include border-radius(6px 6px 0 0);
 
             .item-input{
                 width: 80%;
                 margin-right: 20px;
                 padding-left: 10px;
-                background: $dk-gray;
-                color: $off-white;
+                background: $dk-white;
+                color: $brown;
                 @include border-radius(6px);
+
+                &:focus{
+                    background: white;
+                }
             }
 
             .add-btn{
                 height: 51px;
                 padding: 0;
                 width: 100px;
-                background: $pink;
-                color: $lt-gray;
+                background: $red;
+                color: $md-white;
                 @include border-radius(6px);
 
                 &:hover{
-                    background: #7D032F;
+                    background: #950E2D;
                 }
             }
         }
@@ -110,8 +123,7 @@ body {
                 margin: 0;
 
                 li{
-                    border-bottom: 1px solid;
-                    //margin-top: 5px;
+                    border-bottom: 1px solid $blue;
                     overflow: hidden;
 
                     .complete-item,
@@ -130,13 +142,12 @@ body {
                         margin: 0 0 7px -35px;
                         width: 75%;
                         padding: 0 5px;
-                        background: $md-gray;
-                        color: $lt-gray;
+                        background: white;
+                        color: $brown;
                     }
 
                     &.completed{
-                        background: $md-gray;
-                        color: $lt-gray;
+                        background: $md-white;
 
                         .complete-item{
                             color: green;
@@ -157,12 +168,16 @@ body {
                 height: 51px;
                 padding: 0;
                 width: 100px;
-                background: $pink;
-                color: $lt-gray;
+                background: $red;
+                color: $md-white;
                 @include border-radius(6px);
 
                 &:hover{
-                    background: #7D032F;
+                    background: #950E2D;
+                }
+
+                &.complete{
+                    width: 120px;
                 }
             }
 
